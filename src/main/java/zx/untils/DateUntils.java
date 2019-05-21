@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class DateUntils {
 
@@ -49,7 +50,7 @@ public class DateUntils {
         return threadLocal.get().format(date);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ExecutorService service = Executors.newFixedThreadPool(100);
         for (int i = 0; i <  100; i++) {
             service.execute(()->{
@@ -63,8 +64,9 @@ public class DateUntils {
 
             });
         }
+
+        service.shutdown();
+        service.awaitTermination(1, TimeUnit.DAYS);
     }
-
-
 
 }
