@@ -1,10 +1,11 @@
 package zx.untils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,6 +33,8 @@ public class DateUntils {
      * @param date
      * @return yyyy-MM-dd
      */
+
+    @NotNull
     public static String formatDay(Date date){
         return threadLocal.get().format(date).substring(0,9);
     }
@@ -41,6 +44,7 @@ public class DateUntils {
      * @param date
      * @return yyyy-MM-dd HH:mm:ss
      */
+    @NotNull
     public static  String formartSecond(Date date){
         return threadLocal.get().format(date);
     }
